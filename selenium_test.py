@@ -20,11 +20,13 @@ driver.find_element_by_id('ctl00_ContentPlaceHolder1_btnAssocCountySearch').clic
 time.sleep(2)
 driver.find_element_by_id('ctl00_ContentPlaceHolder1_btnSearch').click()
 time.sleep(2)
-driver.find_element_by_partial_link_text('./Project.aspx?ProjectPK=').click()
+driver.find_element_by_xpath('//*[@id="ctl00_ContentPlaceHolder1_MetricSearchGrid_ctl00_ctl03_ctl01_PageSizeComboBox"]/span/button').click()
+time.sleep(2)
+driver.find_element_by_xpath('//ul[@class="rcbList"]/li[4]').click()
+# driver.find_element_by_xpath('//*[@id="ctl00_ContentPlaceHolder1_MetricSearchGrid_ctl00_ctl03_ctl01_PageSizeComboBox_DropDown"]/div/ul/li[4]').click
 # driver.find_element_by_xpath('//*[@title="Next Page"]').click()
 # print element.page_source
 # print(project.__class__.__name__)
-
 # driver2 = webdriver.Firefox()
 # driver2.get(raw_input('http://bondaccountability.resources.ca.gov/p1.aspx'))
 # print driver2.page_source
