@@ -7,14 +7,12 @@ from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select
 import time
+import csv
 
+## Goes to website, opens up the table
 driver = webdriver.Firefox()
 driver.get('http://bondaccountability.resources.ca.gov/p1.aspx')
-# driver.get('http://bondaccountability.resources.ca.gov/AssociatedCountySearch.aspx')
 driver.find_element_by_partial_link_text('Project Search').click()
-# driver.manage().timeouts().pageLoadTimeout(15, TimeUnit.SECONDS);
-# wait = WebDriverWait(driver, 10)
-# button = wait.until(EC.elementToBeClickable(By.id("ctl00_ContentPlaceHolder1_btnAssocCountySearch")))
 time.sleep(2)
 driver.find_element_by_id('ctl00_ContentPlaceHolder1_btnAssocCountySearch').click()
 time.sleep(2)
@@ -23,24 +21,9 @@ time.sleep(2)
 driver.find_element_by_xpath('//*[@id="ctl00_ContentPlaceHolder1_MetricSearchGrid_ctl00_ctl03_ctl01_PageSizeComboBox"]/span/button').click()
 time.sleep(2)
 driver.find_element_by_xpath('//ul[@class="rcbList"]/li[4]').click()
-# driver.find_element_by_xpath('//*[@id="ctl00_ContentPlaceHolder1_MetricSearchGrid_ctl00_ctl03_ctl01_PageSizeComboBox_DropDown"]/div/ul/li[4]').click
-# driver.find_element_by_xpath('//*[@title="Next Page"]').click()
-# print element.page_source
-# print(project.__class__.__name__)
-# driver2 = webdriver.Firefox()
-# driver2.get(raw_input('http://bondaccountability.resources.ca.gov/p1.aspx'))
-# print driver2.page_source
+time.sleep(2)
 
-# wait = WebDriverWait(driver, 10)
-# button = wait.until(EC.presence_of_element_located((By.ID, "'ctl00_ContentPlaceHolder1_btnAssocCountySearch'")))
-# button.click()
-# #
-# wait2 = WebDriverWait(driver, 30)
-# button2 = wait2.until(EC.presence_of_element_located((By.ID, "ctl00_ContentPlaceHolder1_btnSearch")))
-# button2.submit()
-
-
-# county = project.find_element_by_id("ctl00_ContentPlaceHolder1_btnAssocCountySearch").click()
-#
-# other = wait.until(EC.presence_of_element_located((By.ID,'ctl00_ContentPlaceHolder1_btnSearch')))
-# other.click()
+## prints table project hyperlinks
+links = driver.find_elements_by_css_selector("a[href*='ProjectPK']")
+for link in links:
+    print link.get_attribute("href")
